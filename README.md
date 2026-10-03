@@ -1,47 +1,47 @@
-# AHMED ELGHRBAWY — FINAL PREMIUM
+# AHMED ELGHRBAWY — PHYSICS LAB V3
 
-## نظام الحسابات
-- لا يوجد رقم هاتف ولا OTP.
-- إنشاء الحساب: الاسم الرباعي + المرحلة + الصف + كلمة سر من 10 أحرف/أرقام/رموز بالضبط، بدون مسافات.
-- تسجيل الدخول: كلمة السر فقط.
-- كلمة السر لا تظهر في قاعدة البيانات كبيانات ملف شخصي؛ Supabase Auth يتولى تخزين والتحقق من كلمة السر.
-- الحسابات تستخدم معرف بريد داخليًا فقط حتى يعمل Supabase Auth، والطالب لا يراه ولا يدخله.
+منصة فيزياء بهوية بصرية جديدة بالكامل، مع الحفاظ على Core System: تسجيل، محتوى، فيديوهات، صور، امتحانات، نتائج، Logs، Admin، وإعدادات المنصة.
 
-## مراحل الدراسة
-- ابتدائية: الأول إلى السادس.
-- إعدادية: الأول إلى الثالث.
-- ثانوية: الأول إلى الثالث.
+## أهم التغييرات
+- الصفحة الرئيسية متاحة للجميع بدون تسجيل.
+- الزائر يقدر يشوف بطاقات المحتوى، لكن الفيديو/الامتحان/المحتوى المقفول لا يفتح إلا بعد تسجيل الدخول.
+- تسجيل الحساب على 3 مراحل:
+  1. طالب أو Admin.
+  2. الاسم، وللطالب المرحلة والصف.
+  3. كلمة السر + التأكيد.
+- الطالب: ابتدائي أولى–سادسة، إعدادي أولى–ثالثة، ثانوي أولى–ثالثة.
+- Admin: الاسم + كلمة السر فقط. اختيار Admin لا يمنح صلاحية Admin تلقائيًا؛ الصلاحية الحقيقية هي `profiles.role='admin'`.
+- كلمة السر 10 خانات بالضبط، حروف/أرقام/رموز بدون مسافات.
+- دخول الحساب بكلمة السر فقط.
+- واجهة جديدة داكنة بالكامل، مع حركة فيزيائية وخلفية نجوم/مدارات/معادلات.
+- شات داخل الصفحة الرئيسية مع ردود مساعدة سريعة.
+- كارت HELPER وكارت ADMIN قابلان للتعديل من لوحة الإدارة.
+- إعدادات Admin لتغيير الأرقام، الروابط، عناوين الصفحة، خلفية الموقع، بيانات HELPER/ADMIN، وإعداد Webhook للـDiscord Logs مستقبلًا.
+- صفحة Logs تجمع نشاط الحسابات والمحتوى والامتحانات والنتائج والمشتريات.
+- منع الطالب من إعادة نفس الامتحان على مستوى قاعدة البيانات.
+- واجهة محسنة للموبايل والتابلت والديسكتوب والتلفاز.
 
-## Vercel — مطلوب مرة واحدة
-أضف Environment Variables إلى مشروع Vercel:
-- `SUPABASE_URL` = رابط مشروع Supabase.
-- `SUPABASE_SERVICE_ROLE_KEY` = Service Role Key الخاص بالمشروع.
+## Supabase — مرة واحدة للمشروع الجديد
+شغّل الملف:
+`supabase/schema.sql`
+داخل Supabase → SQL Editor → Run.
 
-**لا تضع Service Role Key داخل أي ملف JavaScript يعمل في المتصفح.**
+الملف ينشئ الجداول الأساسية + `site_settings` + `activity_logs` + التخزين + سياسات الأمان.
 
-بعد إضافة المتغيرات اعمل Redeploy.
+## Vercel
+أضف Environment Variables:
+- `SUPABASE_URL`
+- `SUPABASE_SERVICE_ROLE_KEY`
 
-## Supabase
-1. شغّل `supabase/schema.sql` في SQL Editor.
-2. لا تحتاج لإدخال Email أو Phone للطلاب.
-3. يمكن أن يظل Email/Phone provider غير مستخدم للطلاب؛ التسجيل يتم عبر `/api/auth` باستخدام Service Role على الخادم ثم إنشاء جلسة Supabase.
-4. لإنشاء Admin: أنشئ حسابًا عاديًا أولًا، ثم نفّذ في SQL Editor:
+ثم Redeploy.
 
-```sql
-select id, full_name from public.profiles order by created_at desc;
-update public.profiles set role='admin' where id='USER-ID-HERE';
-```
+**مهم:** Service Role Key سرّي جدًا ولا يوضع في GitHub أو JavaScript الخاص بالمتصفح.
 
-## ملاحظة
-الـService Role Key سرّي جدًا ويجب أن يبقى في Environment Variables على Vercel فقط.
+## الصور والخلفية
+يمكنك وضع الصور في:
+`assets/images/`
 
+أو من Admin → Settings رفع خلفية مباشرة من الجهاز.
 
-## التعديلات الأخيرة
-- نوع الحساب في التسجيل: طالب / مدرس / Admin (تعريفي فقط). لا يمنح أي صلاحية؛ الصلاحية الحقيقية من `profiles.role` فقط.
-- زر ADMIN يظهر للحساب الذي `role='admin'` فقط.
-- تم إصلاح مسارات لوحة الإدارة باستخدام Vercel rewrites.
-- أضيفت قناة WhatsApp وTikTok ورقم المساعدة 01105638650، وتم حذف رابط YouTube.
-- بعد التحديث شغّل `supabase/schema.sql` مرة أخرى في SQL Editor لتطبيق عمود `account_type` وتحديث Trigger التسجيل.
-
-
-FINAL FIX: Admin pages use direct .html links to avoid Vercel rewrite/page-not-found issues. Registration supports only Student or Admin; Admin registration requires password only.
+## Discord Logs
+صفحة Admin → Logs تحتوي زر ربط Discord، وصفحة Settings بها مكان Webhook غرفة `لوج المنصة`. الربط التلقائي يمكن تفعيله لاحقًا من Backend/Discord Bot بدون تغيير Core System.
