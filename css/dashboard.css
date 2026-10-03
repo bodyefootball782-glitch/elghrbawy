@@ -4,3 +4,5 @@
 .dash-card,.content-card{background:linear-gradient(145deg,#0c1521,#09111b);border-color:#1c3047;color:#edf4fb}.dash-card small,.content-body p{color:#8e9eb1}.cover{background:linear-gradient(135deg,#0b2a4b,#07111e);border-bottom:1px solid #1b3047}.tag{background:rgba(47,143,255,.11);color:#67adff;border:1px solid rgba(47,143,255,.18)}
 
 .admin-row{padding:0 0 8px}.admin-row .container{display:flex;justify-content:flex-start}.admin-row .btn{box-shadow:0 10px 25px rgba(231,189,88,.14)}
+/* V3 dashboard mobile polish */
+.admin-row{position:relative;z-index:3}.dash{position:relative;z-index:1}.dash-card{min-height:125px;justify-content:center}.dash-card i{color:#36e0ff}.content-card{color:#f3f8ff}.content-card .content-body{background:transparent}.meta{display:flex;align-items:center;justify-content:space-between;gap:8px}.price{font-size:9px;color:#f1c85b}@media(max-width:650px){.topbar .top-actions{gap:4px}.topbar .btn{padding:8px 9px;font-size:9px}.welcome{margin-top:10px}.dash-grid{grid-template-columns:1fr 1fr!important}.content-grid{grid-template-columns:1fr!important}}
