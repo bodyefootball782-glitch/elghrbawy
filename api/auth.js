@@ -60,8 +60,9 @@ module.exports = async (req, res) => {
       const stage = String(body.stage || '').trim();
       const grade = String(body.grade || '').trim();
       if (!['student','admin'].includes(accountType)) return json(res, 400, { error: 'اختار نوع الحساب: طالب أو Admin.' });
+      if (!fullName || fullName.length < 2) return json(res, 400, { error: isAdminSignup ? 'اكتب اسم الأدمن.' : 'اكتب الاسم الرباعي كاملًا.' });
+      if (!isAdminSignup && !validName(fullName)) return json(res, 400, { error: 'اكتب الاسم الرباعي كاملًا.' });
       if (!isAdminSignup) {
-        if (!validName(fullName)) return json(res, 400, { error: 'اكتب الاسم الرباعي كاملًا.' });
         if (!stages[stage] || !stages[stage].includes(grade)) return json(res, 400, { error: 'المرحلة أو الصف غير صحيح.' });
       }
 
@@ -71,7 +72,7 @@ module.exports = async (req, res) => {
           email: internalEmail,
           password,
           email_confirm: true,
-          user_metadata: { full_name: isAdminSignup ? 'Admin' : fullName, stage: isAdminSignup ? null : stage, grade: isAdminSignup ? null : grade, account_type: accountType }
+          user_metadata: { full_name: fullName, stage: isAdminSignup ? null : stage, grade: isAdminSignup ? null : grade, account_type: accountType }
         })
       });
       const createData = await create.json().catch(() => ({}));
@@ -89,7 +90,7 @@ module.exports = async (req, res) => {
       const profile = await supabaseFetch(`/rest/v1/profiles?id=eq.${encodeURIComponent(user.id)}`, {
         method: 'PATCH',
         headers: { Prefer: 'return=minimal' },
-        body: JSON.stringify({ full_name: isAdminSignup ? 'Admin' : fullName, stage: isAdminSignup ? null : stage, grade: isAdminSignup ? null : grade, login_email: internalEmail, account_type: accountType })
+        body: JSON.stringify({ full_name: fullName, stage: isAdminSignup ? null : stage, grade: isAdminSignup ? null : grade, login_email: internalEmail, account_type: accountType })
       });
       if (!profile.ok) console.warn('profile sync warning', await profile.text().catch(() => ''));
 
