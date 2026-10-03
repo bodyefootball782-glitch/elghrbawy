@@ -8,7 +8,7 @@
     }
     const {data,error} = await window.elrfaeySupabase.auth.getUser();
     if (error || !data?.user) {
-      location.href = admin ? '../ahmed/login.html?admin=1' : 'login.html';
+      location.href = admin ? '../ahmed/login.html?next=../admin/index.html' : 'login.html';
       return null;
     }
     if (admin) {
