@@ -57,3 +57,11 @@ values
 (1,'عاصمة مصر؟','["القاهرة","الإسكندرية","طنطا","أسوان"]'::jsonb,0,1);
 ```
 الطالب لا يحصل على `correct_index`؛ التصحيح يتم داخل Supabase عبر `submit_exam`.
+
+
+## Vercel environment variables
+The server-side API requires these exact names in Vercel Production (and Preview if used):
+- `SUPABASE_URL` = your Supabase project URL
+- `SUPABASE_SERVICE_ROLE_KEY` = your Supabase service-role secret
+
+The browser uses the public/publishable key in `js/supabase-config.js`. Never put the service-role key in browser files.
