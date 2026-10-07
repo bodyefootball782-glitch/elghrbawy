@@ -163,3 +163,32 @@ main,.topbar,footer{position:relative;z-index:1}.hero-v3{min-height:calc(100vh -
 @media(max-width:900px){.desktop-nav{display:none}.hero-v3{grid-template-columns:1fr;min-height:auto;padding-top:45px}.hero-orbit-card{order:-1;width:min(320px,82vw);height:300px}.orbit-core{width:105px;height:105px}.orbit-core span{font-size:52px}.orbit-core small{margin:65px 0 0 55px}.r1{width:235px;height:95px}.r2{width:285px;height:115px}.quick-stats{grid-template-columns:1fr 1fr}.preview-grid{grid-template-columns:1fr 1fr}.science-quote{grid-template-columns:45px 1fr}.quote-formula{display:none}.contact-panel{flex-direction:column;align-items:stretch}.contact-actions{justify-content:stretch}.contact-chip{flex:1}.topbar{padding-left:8px;padding-right:8px}.brand small{font-size:6px}}
 @media(max-width:600px){.hero-copy-v3 h1{font-size:38px;letter-spacing:-1px}.hero-copy-v3>p{font-size:13px}.hero-actions{display:grid;grid-template-columns:1fr}.hero-actions .btn{width:100%;justify-content:center}.micro-pills{gap:5px}.micro-pills span{font-size:8px}.preview-grid,.team-grid{grid-template-columns:1fr}.preview-card{grid-template-columns:70px 1fr}.preview-icon{min-height:110px}.section-head-v3{align-items:flex-start;flex-direction:column}.section-head-v3 h2{font-size:20px}.science-quote{padding:20px;grid-template-columns:35px 1fr}.science-quote h2{font-size:18px}.chat-messages{height:230px}.chat-msg{max-width:88%}.contact-actions{display:grid;grid-template-columns:1fr 1fr}.contact-chip{min-width:0}.stat-v3{padding:13px}.stat-v3 b{font-size:19px}.stat-v3 span{font-size:8px}.stat-v3 i{width:34px;height:34px}.premium-top .top-actions .btn{padding:8px 9px;font-size:9px}.premium-top .brand b{font-size:15px}}
 @media(max-width:380px){.quick-stats{grid-template-columns:1fr}.contact-actions{grid-template-columns:1fr}.hero-copy-v3 h1{font-size:34px}}
+
+/* ===== FINAL POLISH: typography + teacher card ===== */
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap');
+body{font-family:Tajawal,Cairo,Arial,sans-serif}
+.hero h1,.section-head-v3 h2,.science-quote h2{letter-spacing:-.5px}
+.hero h1{color:#eaf2ff;text-shadow:0 8px 35px rgba(0,0,0,.35)}
+.hero h1 span,.hero h1 em{background:linear-gradient(90deg,#58b7ff,#e8c45b);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-visual{position:relative;min-height:430px;display:grid;place-items:center}
+.teacher-card{width:min(300px,86vw);padding:12px;border:1px solid rgba(77,157,255,.28);border-radius:30px;background:linear-gradient(145deg,rgba(11,20,33,.96),rgba(5,10,18,.92));box-shadow:0 30px 90px rgba(0,0,0,.48),0 0 50px rgba(47,140,255,.08);position:relative;z-index:4;transform:rotate(-2deg);transition:.35s}
+.teacher-card:hover{transform:rotate(0) translateY(-6px);box-shadow:0 35px 100px rgba(0,0,0,.58),0 0 55px rgba(47,140,255,.15)}
+.teacher-card-glow{position:absolute;inset:-2px;border-radius:32px;background:linear-gradient(135deg,rgba(47,140,255,.35),transparent 45%,rgba(228,185,87,.25));filter:blur(16px);z-index:-1}
+.teacher-photo-frame{height:310px;border-radius:22px;overflow:hidden;position:relative;background:radial-gradient(circle at 50% 35%,rgba(47,140,255,.2),transparent 45%),#07101c;border:1px solid #203a56;display:grid;place-items:center}
+.teacher-photo-frame img{width:100%;height:100%;object-fit:cover}
+.photo-placeholder-content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;color:#8ea9c4;text-align:center;padding:20px}
+.photo-placeholder-content i{font-size:48px;color:#e5bd58}
+.photo-placeholder-content span{font-weight:900;color:#dbeaff}
+.photo-placeholder-content small{font-size:9px;color:#6e8298}
+.teacher-card-info{padding:13px 7px 5px;text-align:right}
+.teacher-card-info span{display:block;color:#e4b957;font:800 8px Poppins;letter-spacing:2px}
+.teacher-card-info b{display:block;color:#f2f7ff;font-size:20px;margin-top:4px}
+.teacher-card-info small{color:#8fa3b8;font-size:10px}
+.hero-orbit-card{position:absolute;inset:auto -10px 8px auto;width:170px;height:170px;transform:scale(.72);opacity:.75;z-index:3}
+@media(max-width:750px){
+  .hero-visual{min-height:370px}
+  .teacher-card{width:min(270px,82vw)}
+  .teacher-photo-frame{height:275px}
+  .hero-orbit-card{right:-12px;bottom:-4px;transform:scale(.56)}
+  .hero h1{font-size:clamp(27px,8vw,38px)}
+}
