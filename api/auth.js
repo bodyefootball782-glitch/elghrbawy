@@ -50,8 +50,8 @@ module.exports = async (req, res) => {
 
     const digest = hashPassword(password);
     // Internal identifier only. The student never sees or enters this address.
-    // example.com is a reserved, syntactically valid domain and no email is sent.
-    const internalEmail = `student_${digest}@example.com`;
+    // Use a project-specific synthetic address; students never see or enter it.
+    const internalEmail = `student_${digest}@students.elghrbawy.com`;
 
     if (action === 'register') {
       const accountType = String(body.account_type || '').trim();

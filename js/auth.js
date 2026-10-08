@@ -17,7 +17,7 @@ function internalEmail(password){
   // SHA-256 via Web Crypto keeps the same deterministic identifier used by the API version.
   return crypto.subtle.digest('SHA-256',bytes).then(buf=>{
     const hex=Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
-    return `student_${hex}@example.com`;
+    return `student_${hex}@students.elghrbawy.com`;
   });
 }
 async function directRegister({full_name,stage,grade,account_type,password}){
