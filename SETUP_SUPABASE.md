@@ -16,6 +16,8 @@
 على Vercel افتح Project → Settings → Environment Variables وأضف:
 - `SUPABASE_URL` = Project URL
 - `SUPABASE_SERVICE_ROLE_KEY` = Service Role Key
+- `AUTH_LOOKUP_SECRET` = مفتاح سري عشوائي طويل (موصى به)
+- `DISCORD_BOT_TOKEN` = Bot Token الخاص بـDiscord (فقط لمزامنة أعضاء السيرفر)
 
 ثم اعمل Redeploy.
 
@@ -65,3 +67,7 @@ The server-side API requires these exact names in Vercel Production (and Preview
 - `SUPABASE_SERVICE_ROLE_KEY` = your Supabase service-role secret
 
 The browser uses the public/publishable key in `js/supabase-config.js`. Never put the service-role key in browser files.
+
+
+## Discord
+بعد تشغيل `schema.sql`: افتح Admin → Settings وضع Webhook كل روم. لمزامنة أعضاء السيرفر ضع Guild ID، وأضف Bot Token في Vercel مع تفعيل Server Members Intent للبوت. لا يتم إرسال كلمات السر إلى Discord.

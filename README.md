@@ -32,6 +32,8 @@
 أضف Environment Variables:
 - `SUPABASE_URL`
 - `SUPABASE_SERVICE_ROLE_KEY`
+- `AUTH_LOOKUP_SECRET` = secret عشوائي طويل (اختياري، والأفضل إضافته)
+- `DISCORD_BOT_TOKEN` = توكن بوت Discord (مطلوب فقط لمزامنة أعضاء السيرفر)
 
 ثم Redeploy.
 
@@ -52,3 +54,13 @@
 - Browser uses the publishable Supabase key only; the service-role key must remain in Vercel server environment variables for `/api/stats`.
 - Required Vercel server variables: `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY`.
 - Admin access is controlled only by `profiles.role = 'admin'`; choosing Admin during registration does NOT grant admin privileges.
+
+## V5 — التسجيل والـDiscord
+- لا يطلب الموقع Email من الطالب أو Admin. يوجد بريد داخلي عشوائي فقط داخل Supabase Auth ولا يظهر في الواجهة.
+- رقم الهاتف للطالب معلومة في الملف، وليس وسيلة تسجيل أو OTP.
+- كلمة السر لا يتم إرسالها إلى Discord ولا تخزينها كنص صريح.
+- `profiles.password_lookup` يستخدم فقط للعثور على الحساب عند تسجيل الدخول بكلمة السر.
+- Admin → Settings يحتوي على بيانات الأستاذ، HELPER، ADMIN، الروابط، الخلفية، وWebhooks منفصلة للتسجيلات والفيديوهات والصور والامتحانات والإدارة وأعضاء Discord.
+- المشاهدة تُسجل في `activity_logs`: فيديو/صورة/فتح امتحان/بدء امتحان/تسليم ونتيجة.
+- لمزامنة أعضاء Discord: أضف `DISCORD_BOT_TOKEN` في Vercel، فعّل Server Members Intent للبوت، ضع Guild ID وWebhook غرفة الأعضاء في Settings، ثم احفظ أو اضغط مزامنة.
+- لا تضع Bot Token أو Service Role Key داخل ملفات JavaScript أو GitHub.
