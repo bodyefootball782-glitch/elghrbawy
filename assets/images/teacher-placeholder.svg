@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000">
+<defs><radialGradient id="g" cx="50%" cy="25%"><stop stop-color="#1c8fcf" stop-opacity=".35"/><stop offset="1" stop-color="#07111c" stop-opacity="0"/></radialGradient><linearGradient id="b" x1="0" x2="1"><stop stop-color="#0a1727"/><stop offset="1" stop-color="#050a12"/></linearGradient></defs>
+<rect width="800" height="1000" fill="url(#b)"/><circle cx="400" cy="250" r="260" fill="url(#g)"/>
+<g fill="none" stroke="#36e0ff" stroke-opacity=".35"><circle cx="400" cy="310" r="220"/><ellipse cx="400" cy="310" rx="300" ry="100" transform="rotate(-18 400 310)"/><ellipse cx="400" cy="310" rx="300" ry="100" transform="rotate(18 400 310)"/></g>
+<circle cx="400" cy="310" r="82" fill="#0c2437" stroke="#36e0ff" stroke-width="5"/><path d="M240 900c20-240 95-360 160-360s140 120 160 360" fill="#0b2032" stroke="#e7bd58" stroke-width="5"/>
+<text x="400" y="300" fill="#eaf8ff" font-family="Arial" font-size="62" font-weight="700" text-anchor="middle">AHMED</text>
+<text x="400" y="375" fill="#e7bd58" font-family="Arial" font-size="46" font-weight="700" text-anchor="middle">ELGHRBAWY</text>
+<text x="400" y="950" fill="#8fa6bb" font-family="Arial" font-size="28" text-anchor="middle">PHYSICS LAB</text>
+</svg>

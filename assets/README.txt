@@ -1,7 +1,20 @@
-ضع هنا ملفات الهوية البصرية لمنصة أحمد الغرباوي:
-- images/teacher.jpg صورة الأستاذ
-- images/logo.png اللوجو (اختياري)
-- images/hero.jpg خلفية/صورة رئيسية (اختياري)
-- music/music.mp3 موسيقى هادئة (اختياري)
+AHMED ELGHRBAWY ASSETS
 
-لو لم تضف الملفات الاختيارية، المنصة تستخدم التصميم البديل بدون أن تتعطل.
+ضع صورة الأستاذ هنا:
+assets/images/teacher.jpg
+
+اللوجو:
+assets/images/logo.png
+
+صورة Hero اختيارية:
+assets/images/hero.jpg
+
+موسيقى اختيارية:
+assets/music/music.mp3
+
+يمكنك أيضًا رفع خلفية الموقع مباشرة من:
+ADMIN > Settings > خلفية الموقع
+
+Teacher photo:
+Place the real teacher image at assets/images/teacher.jpg (or teacher.png / teacher.webp).
+The homepage automatically tries all three formats and falls back to teacher-placeholder.svg.

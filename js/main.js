@@ -3,6 +3,13 @@
  const settings={};
  try{const {data}=await sb.from('site_settings').select('data').eq('id',1).single();Object.assign(settings,data?.data||{});}catch(e){console.warn('settings unavailable',e)}
  const setText=(id,v)=>{const el=document.getElementById(id);if(el&&v)el.textContent=v};
+ const teacherImg=document.getElementById('teacherPhoto');
+ if(teacherImg){
+   const candidates=['assets/images/teacher.jpg','assets/images/teacher.png','assets/images/teacher.webp','assets/images/ahmed.jpg','assets/images/ahmed.png'];
+   let ti=0;
+   teacherImg.onerror=()=>{ti++; if(ti<candidates.length){teacherImg.src=candidates[ti];}else{teacherImg.onerror=null;teacherImg.src='assets/images/teacher-placeholder.svg';teacherImg.style.display='block';teacherImg.parentElement.classList.add('photo-placeholder')}};
+ }
+
  setText('heroTitle',settings.hero_title||'الفيزياء مش حفظ… الفيزياء فهم.');setText('heroSubtitle',settings.hero_subtitle||'افهم القانون، شوف الفكرة، وبعدها الحل هييجي لوحده.');setText('developerPhone',settings.developer_phone||'—');
  const setLink=(id,href,label)=>{const el=document.getElementById(id);if(!el)return;if(href){el.href=href;if(label)el.querySelector('small').textContent=label;}else{el.removeAttribute('href');el.querySelector('small').textContent='غير مضاف بعد';}};
  setLink('teacherContact',settings.teacher_phone?'tel:'+settings.teacher_phone:'',settings.teacher_phone||'غير مضاف');setLink('supportContact',settings.support_phone?'tel:'+settings.support_phone:'',settings.support_phone||'غير مضاف');setLink('whatsappContact',settings.whatsapp,settings.whatsapp?'تواصل مباشرة':'غير مضاف');

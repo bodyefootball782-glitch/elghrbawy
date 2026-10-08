@@ -45,3 +45,10 @@
 
 ## Discord Logs
 صفحة Admin → Logs تحتوي زر ربط Discord، وصفحة Settings بها مكان Webhook غرفة `لوج المنصة`. الربط التلقائي يمكن تفعيله لاحقًا من Backend/Discord Bot بدون تغيير Core System.
+
+## FINAL V4 notes
+- Teacher photo: put the real photo in `assets/images/teacher.jpg` (PNG/WebP also supported).
+- If no photo is supplied, the site shows `assets/images/teacher-placeholder.svg` instead of a blank card.
+- Browser uses the publishable Supabase key only; the service-role key must remain in Vercel server environment variables for `/api/stats`.
+- Required Vercel server variables: `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY`.
+- Admin access is controlled only by `profiles.role = 'admin'`; choosing Admin during registration does NOT grant admin privileges.
